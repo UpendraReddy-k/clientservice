@@ -1,24 +1,19 @@
 package com.bank.clientservice.model;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "addresses")
+@Table(name = "ADDRESSES")
 public class UserAddr implements Serializable {
 	private static final long serialVersionUID = -6848375430659013311L;
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "aid", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String houseno;
@@ -30,26 +25,9 @@ public class UserAddr implements Serializable {
 	private String emailid;
 	private long phoneno;
 	private long alternateno;
-	//@OneToOne(fetch = FetchType.LAZY, optional = false)
-	//@JoinColumn(name = "user_id", nullable = false)
-	@OneToOne(targetEntity=UserRegistration.class,cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id",referencedColumnName="uid")
-	private UserRegistration userReg;
 
 	public UserAddr() {
 	}
-
-	
-	/*
-	 * public UserAddr(Long id, String houseno, String village, String street,
-	 * String mandal, String district, Integer pincode, String emailid, long
-	 * phoneno, long alternateno, UserRegistration userReg) { super(); this.id = id;
-	 * this.houseno = houseno; this.village = village; Street = street; this.mandal
-	 * = mandal; this.district = district; this.pincode = pincode; this.emailid =
-	 * emailid; this.phoneno = phoneno; this.alternateno = alternateno; this.userReg
-	 * = userReg; }
-	 */
-
 
 	public Long getId() {
 		return id;
@@ -131,21 +109,10 @@ public class UserAddr implements Serializable {
 		this.alternateno = alternateno;
 	}
 
-	public UserRegistration getUserReg() {
-		return userReg;
-	}
-
-	public void setUserReg(UserRegistration userReg) {
-		this.userReg = userReg;
-	}
-
 	@Override
 	public String toString() {
 		return "UserAddr [id=" + id + ", houseno=" + houseno + ", village=" + village + ", Street=" + Street
 				+ ", mandal=" + mandal + ", district=" + district + ", pincode=" + pincode + ", emailid=" + emailid
-				+ ", phoneno=" + phoneno + ", alternateno=" + alternateno + ", userReg=" + userReg + "]";
+				+ ", phoneno=" + phoneno + ", alternateno=" + alternateno + "]";
 	}
-
-	
-	 
 }

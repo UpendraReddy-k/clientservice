@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "banktype")
-public class BankType implements Serializable{
+@Table(name = "BANKTYPE")
+public class BankType implements Serializable {
 
 	private static final long serialVersionUID = -6628888198151300733L;
 	@Id
@@ -25,21 +25,10 @@ public class BankType implements Serializable{
 	private Long id;
 	private String acctype;
 	private String banktype;
-
 	@OneToMany(targetEntity = UserRegistration.class, mappedBy = "bankType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<UserRegistration> users;
 
 	public BankType() {
-	}
-
-	/*
-	 * public BankType(Integer bankid, String acctype, String banktype,
-	 * Set<UserRegistration> users) { super(); this.bankid = bankid; this.acctype =
-	 * acctype; this.banktype = banktype; this.users = users; }
-	 */
-
-	public String getAcctype() {
-		return acctype;
 	}
 
 	public Long getId() {
@@ -48,6 +37,10 @@ public class BankType implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getAcctype() {
+		return acctype;
 	}
 
 	public void setAcctype(String acctype) {
@@ -72,8 +65,6 @@ public class BankType implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BankType [id=" + id + ", acctype=" + acctype + ", banktype=" + banktype + ", users=" + users + "]";
+		return "BankType [id=" + id + ", acctype=" + acctype + ", banktype=" + banktype + "]";
 	}
-
-	
 }
