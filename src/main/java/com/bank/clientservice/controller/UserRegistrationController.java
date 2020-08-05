@@ -22,7 +22,7 @@ public class UserRegistrationController {
 
 	@RequestMapping(value="/user")
 	@PostMapping
-	public ResponseEntity<String> save(@RequestBody UserRegistration userRegistration) throws CustomException {
+	public ResponseEntity<UserRegistration> save(@RequestBody UserRegistration userRegistration) throws CustomException {
 		/*
 		 * System.out.println("user data in controller "+userRegistration.getId() + " "
 		 * + userRegistration.getFname() + " " + userRegistration.getLname() + " " +
@@ -30,8 +30,8 @@ public class UserRegistrationController {
 		 * userRegistration.getAadhar_no()+" " + userRegistration.getUseraddr()+" "+
 		 * userRegistration.getBankType());
 		 */
-		userRegistrationServiceImpl.save(userRegistration);
-		return new ResponseEntity<String>(ApplicationUtils.CREATED, HttpStatus.CREATED);
+		UserRegistration result=userRegistrationServiceImpl.save(userRegistration);
+		return new ResponseEntity<UserRegistration>(result, HttpStatus.CREATED);
 
 	}
 
