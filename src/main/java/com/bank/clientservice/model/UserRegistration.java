@@ -35,7 +35,7 @@ public class UserRegistration implements Serializable {
 	private String surname;
 	private String pan_no;
 	private long aadhar_no;
-	//@OneToOne(mappedBy = "userReg", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "userReg", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private UserAddr useraddr;
 
 	/*
