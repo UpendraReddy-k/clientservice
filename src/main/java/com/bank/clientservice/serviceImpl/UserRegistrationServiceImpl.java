@@ -19,6 +19,7 @@ public class UserRegistrationServiceImpl {
 
 			if (Objects.nonNull(userRegistration) && Objects.nonNull(userRegistration.getUseraddr())
 					&& Objects.nonNull(userRegistration.getBankType())) {
+				System.out.println("i am in if condition ***********");
 				userregistrationDao.save(userRegistration);
 			} else {
 				System.out

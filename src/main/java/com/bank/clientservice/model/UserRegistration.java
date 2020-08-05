@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 //import org.hibernate.annotations.NotFound;
 //import org.hibernate.annotations.NotFoundAction;
 
@@ -24,7 +27,7 @@ public class UserRegistration implements Serializable {
 
 	private static final long serialVersionUID = -1336411889466137553L;
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "uid", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String fname;
@@ -35,9 +38,14 @@ public class UserRegistration implements Serializable {
 	@OneToOne(mappedBy = "userReg", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private UserAddr useraddr;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	// @NotFound( action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "bank_id", nullable = false)
+	/*
+	 * @ManyToOne(fetch = FetchType.LAZY, optional = false) //@NotFound( action =
+	 * NotFoundAction.IGNORE)
+	 * 
+	 * @JoinColumn(name = "bank_id", nullable = false)
+	 */
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="bank_id",referencedColumnName="bid")
 	private BankType bankType;
 
 	public UserRegistration() {

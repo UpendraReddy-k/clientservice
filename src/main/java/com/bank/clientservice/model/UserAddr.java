@@ -2,6 +2,7 @@ package com.bank.clientservice.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,8 +30,10 @@ public class UserAddr implements Serializable {
 	private String emailid;
 	private long phoneno;
 	private long alternateno;
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id", nullable = false)
+	//@OneToOne(fetch = FetchType.LAZY, optional = false)
+	//@JoinColumn(name = "user_id", nullable = false)
+	@OneToOne(targetEntity=UserRegistration.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id",referencedColumnName="uid")
 	private UserRegistration userReg;
 
 	public UserAddr() {
