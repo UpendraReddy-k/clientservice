@@ -118,9 +118,5 @@ public class UserRegistration implements Serializable {
 	public void setBankType(BankType bankType) {
 		this.bankType = bankType;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	
 }
