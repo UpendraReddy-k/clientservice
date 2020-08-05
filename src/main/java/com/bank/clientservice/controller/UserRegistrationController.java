@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.clientservice.model.UserRegistration;
 import com.bank.clientservice.serviceImpl.UserRegistrationServiceImpl;
+import com.bank.clientservice.utils.ApplicationUtils;
 
 @RestController
 @RequestMapping(value = "/userregistration")
@@ -21,13 +22,15 @@ public class UserRegistrationController {
 	@RequestMapping
 	@PostMapping
 	public ResponseEntity<String> save(@RequestBody UserRegistration userRegistration) {
-		System.out.println("user data in controller "+userRegistration.getId() + " " + userRegistration.getFname() + " "
-				+ userRegistration.getLname() + " " + userRegistration.getSurname() + " "
-				+ userRegistration.getPan_no() + " " + userRegistration.getAadhar_no()+" "
-				+ userRegistration.getUseraddr()+" "+ userRegistration.getBankType());
-
+		/*
+		 * System.out.println("user data in controller "+userRegistration.getId() + " "
+		 * + userRegistration.getFname() + " " + userRegistration.getLname() + " " +
+		 * userRegistration.getSurname() + " " + userRegistration.getPan_no() + " " +
+		 * userRegistration.getAadhar_no()+" " + userRegistration.getUseraddr()+" "+
+		 * userRegistration.getBankType());
+		 */
 		userRegistrationServiceImpl.save(userRegistration);
-		return new ResponseEntity<String>("inserted Successfully", HttpStatus.CREATED);
+		return new ResponseEntity<String>(ApplicationUtils.CREATED, HttpStatus.CREATED);
 
 	}
 
