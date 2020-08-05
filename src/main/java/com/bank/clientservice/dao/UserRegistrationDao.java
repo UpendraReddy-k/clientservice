@@ -7,6 +7,6 @@ import com.bank.clientservice.model.UserRegistration;
 
 
 @Repository
-public interface UserRegistrationDao extends CrudRepository<UserRegistration, Integer> {
+public interface UserRegistrationDao extends CrudRepository<UserRegistration, Long> {
 
 }

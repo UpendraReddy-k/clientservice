@@ -23,8 +23,8 @@ public class UserRegistrationController {
 	public ResponseEntity<String> save(@RequestBody UserRegistration userRegistration) {
 		System.out.println("user data in controller "+userRegistration.getId() + " " + userRegistration.getFname() + " "
 				+ userRegistration.getLname() + " " + userRegistration.getSurname() + " "
-				+ userRegistration.getPan_no() + " " + userRegistration.getAadhar_no() + " "
-				+ userRegistration.getUseraddr() + " " + userRegistration.getBankType());
+				+ userRegistration.getPan_no() + " " + userRegistration.getAadhar_no()+" "
+				+ userRegistration.getUseraddr()+" "+ userRegistration.getBankType());
 
 		userRegistrationServiceImpl.save(userRegistration);
 		return new ResponseEntity<String>("inserted Successfully", HttpStatus.CREATED);
