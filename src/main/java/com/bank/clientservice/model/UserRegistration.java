@@ -3,6 +3,7 @@ package com.bank.clientservice.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class UserRegistration implements Serializable {
 
 	private static final long serialVersionUID = -1336411889466137553L;
 	@Id
+	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String fname;
@@ -35,7 +37,7 @@ public class UserRegistration implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	// @NotFound( action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "banktype_id", nullable = false)
+	@JoinColumn(name = "bank_id", nullable = false)
 	private BankType bankType;
 
 	public UserRegistration() {

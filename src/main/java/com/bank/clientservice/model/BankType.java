@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,9 @@ public class BankType implements Serializable{
 
 	private static final long serialVersionUID = -6628888198151300733L;
 	@Id
+	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue
-	private Long bankid;
+	private Long id;
 	private String acctype;
 	private String banktype;
 
@@ -35,16 +37,16 @@ public class BankType implements Serializable{
 	 * acctype; this.banktype = banktype; this.users = users; }
 	 */
 
-	public Long getBankid() {
-		return bankid;
-	}
-
-	public void setBankid(Long bankid) {
-		this.bankid = bankid;
-	}
-
 	public String getAcctype() {
 		return acctype;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setAcctype(String acctype) {
@@ -69,7 +71,8 @@ public class BankType implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BankType [bankid=" + bankid + ", acctype=" + acctype + ", banktype=" + banktype + "]";
+		return "BankType [id=" + id + ", acctype=" + acctype + ", banktype=" + banktype + ", users=" + users + "]";
 	}
 
+	
 }
