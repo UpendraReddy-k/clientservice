@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.clientservice.exceptions.CustomException;
@@ -22,7 +23,7 @@ public class UserRegistrationController {
 
 	@RequestMapping(value="/user")
 	@PostMapping
-	public ResponseEntity<UserRegistration> save(@RequestBody UserRegistration userRegistration) throws CustomException {
+	public @ResponseBody ResponseEntity<UserRegistration> save(@RequestBody UserRegistration userRegistration) throws CustomException {
 		/*
 		 * System.out.println("user data in controller "+userRegistration.getId() + " "
 		 * + userRegistration.getFname() + " " + userRegistration.getLname() + " " +

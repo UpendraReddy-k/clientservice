@@ -55,14 +55,7 @@ public class BankType implements Serializable {
 		this.banktype = banktype;
 	}
 
-	public Set<UserRegistration> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<UserRegistration> users) {
-		this.users = users;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "BankType [id=" + id + ", acctype=" + acctype + ", banktype=" + banktype + "]";
