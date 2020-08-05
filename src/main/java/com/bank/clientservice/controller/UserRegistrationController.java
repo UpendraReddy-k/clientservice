@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.clientservice.exceptions.CustomException;
 import com.bank.clientservice.model.UserRegistration;
 import com.bank.clientservice.serviceImpl.UserRegistrationServiceImpl;
 import com.bank.clientservice.utils.ApplicationUtils;
@@ -19,9 +20,9 @@ public class UserRegistrationController {
 	@Autowired
 	private UserRegistrationServiceImpl userRegistrationServiceImpl;
 
-	@RequestMapping
+	@RequestMapping(value="/user")
 	@PostMapping
-	public ResponseEntity<String> save(@RequestBody UserRegistration userRegistration) {
+	public ResponseEntity<String> save(@RequestBody UserRegistration userRegistration) throws CustomException {
 		/*
 		 * System.out.println("user data in controller "+userRegistration.getId() + " "
 		 * + userRegistration.getFname() + " " + userRegistration.getLname() + " " +

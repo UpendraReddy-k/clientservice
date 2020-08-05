@@ -6,30 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.clientservice.dao.UserRegistrationDao;
+import com.bank.clientservice.exceptions.CustomException;
 import com.bank.clientservice.model.UserRegistration;
+import com.bank.clientservice.services.UserRegistrationService;
+import com.bank.clientservice.utils.ApplicationUtils;
 
 @Service
-public class UserRegistrationServiceImpl {
+public class UserRegistrationServiceImpl implements UserRegistrationService {
 	@Autowired
 	UserRegistrationDao userregistrationDao;
 
-	public void save(UserRegistration userRegistration) throws NullPointerException {
-
-		try {
-
+	public UserRegistration save(UserRegistration userRegistration) throws CustomException {
+		UserRegistration result = null;
 			if (Objects.nonNull(userRegistration) && Objects.nonNull(userRegistration.getUseraddr())
 					&& Objects.nonNull(userRegistration.getBankType())) {
-				System.out.println("i am in if condition ***********");
-				userregistrationDao.save(userRegistration);
-			} else {
-				System.out
-						.println("User data in service  " + userRegistration.getId() + " " + userRegistration.getFname()
-								+ " " + userRegistration.getLname() + " " + userRegistration.getSurname() + " "
-								+ userRegistration.getPan_no() + " " + userRegistration.getAadhar_no() + " "
-								+ userRegistration.getUseraddr() + " " + userRegistration.getBankType());
-			}
-		} catch (NullPointerException e) {
-			System.out.println("Null Pointer Exception");
+				try {
+					 result=userregistrationDao.save(userRegistration);
+				}
+				catch(Exception e)
+				{
+					throw new CustomException(ApplicationUtils.CUSTOM_EXCEPTION);
+				}
+			
 		}
+			return result;
 	}
 }
